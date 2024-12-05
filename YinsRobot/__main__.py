@@ -83,7 +83,7 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 *Hello {} !*
-✪ I'm an Yins management bot [✨](https://telegra.ph/file/64f4b1e3ab6d6911447d2.jpg)
+✪ I'm an **Cutie** management bot [✨](https://telegra.ph/file/eafbfcd3dc4aab587bf4a.jpg)
 ────────────────────────
 × *Uptime:* `{}`
 × `{}` *users, across* `{}` *chats.*
@@ -93,17 +93,16 @@ PM_START_TEXT = """
 
 buttons = [
     [
-        InlineKeyboardButton(text="About Yins Robot", callback_data="yins_"),
+        InlineKeyboardButton(text="【🧚‍♀️ᴀʙᴏᴜᴛ ᴍᴇ🧚‍♂️】", callback_data="yins_"),
     ],
     [
-        InlineKeyboardButton(text="Get Help", callback_data="help_back"),
+        InlineKeyboardButton(text="【🤡ᴄᴏᴍᴍᴀɴᴅs ʜᴇʟᴘ🤡】", callback_data="help_back"),
+        InlineKeyboardButton(text="Try inline!​​", switch_inline_query_current_chat=""),
+    ],
+    [
         InlineKeyboardButton(
-            text="Try inline!​​", switch_inline_query_current_chat=""
+            text="【🌟ᴀᴅᴅ ᴍᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘ🌟】", url=f"t.me/{bu}?startgroup=new"
         ),
-    ],
-    [
-        InlineKeyboardButton(
-            text="➗ Add Yins To Your Group ➗", url=f"t.me/{bu}?startgroup=new"),
     ],
 ]
 
@@ -113,7 +112,7 @@ Click on the button bellow to get description about specifics command."""
 
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project by contacting @AyiinXd \
+ You can support the project by contacting @love_u_bobby \
  Supporting isnt always financial! \
  Those who cannot provide monetary support are welcome to help us develop the bot at ."""
 
@@ -198,7 +197,13 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="Go Back", callback_data="help_back")]]
+                        [
+                            [
+                                InlineKeyboardButton(
+                                    text="Go Back", callback_data="help_back"
+                                )
+                            ]
+                        ]
                     ),
                 )
 
@@ -221,7 +226,8 @@ def start(update: Update, context: CallbackContext):
                     escape_markdown(first_name),
                     escape_markdown(uptime),
                     sql.num_users(),
-                    sql.num_chats()),                        
+                    sql.num_chats(),
+                ),
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
@@ -229,9 +235,9 @@ def start(update: Update, context: CallbackContext):
             )
     else:
         update.effective_message.reply_text(
-            f"👋 Hi, Saya {dispatcher.bot.first_name}. Senang bertemu dengan Anda.",
-            parse_mode=ParseMode.HTML
-       )
+            f"👋 Hi, I am {dispatcher.bot.first_name}. Nice to meet you.",
+            parse_mode=ParseMode.HTML,
+        )
 
 
 def error_handler(update, context):
@@ -360,7 +366,7 @@ def yins_about_callback(update, context):
     query = update.callback_query
     if query.data == "yins_":
         query.message.edit_text(
-            text="๏ I'm *Yins*, a powerful group management bot built to help you manage your group easily."
+            text="๏ I'm *cutie*, a powerful group management bot built to help you manage your group easily."
             "\n• I can restrict users."
             "\n• I can greet users with customizable welcome messages and even set a group's rules."
             "\n• I have an advanced anti-flood system."
@@ -368,25 +374,37 @@ def yins_about_callback(update, context):
             "\n• I have a note keeping system, blacklists, and even predetermined replies on certain keywords."
             "\n• I check for admins' permissions before executing any command and more stuffs"
             "\n\n_Yin's licensed under the GNU General Public License v3.0_"
-            "\n\n Click on button bellow to get basic help for YinsRobot.",
+            "\n\n Click on button bellow to get basic help for cutieRobot.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="Admins", callback_data="yins_admin"),
-                    InlineKeyboardButton(text="Notes", callback_data="yins_notes"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Support", callback_data="yins_support"),
-                    InlineKeyboardButton(text="Credits", callback_data="yins_credit"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Source Code", url="https://github.com/AyiinXd/YinsRobot"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Go Back", callback_data="yins_back"),
-                 ]
+                    [
+                        InlineKeyboardButton(
+                            text="【👮ᴀᴅᴍɪɴ👮‍♀️】", callback_data="Alexy_admin"
+                        ),
+                        InlineKeyboardButton(
+                            text="【📒ɴᴏᴛᴇs📒】", callback_data="Alexy_notes"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="【👑sᴜᴘᴘᴏʀᴛ👑】", callback_data="HiTechRockets"
+                        ),
+                        InlineKeyboardButton(
+                            text="【😈ᴄᴏᴍʀᴀᴅᴇ😈】", callback_data="HiTechRocket"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="【🌍ɴᴇᴛᴡᴏʀᴋ🌏】", url="https://t.me/comrade_network"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="Go Back", callback_data="Alexy_back"
+                        ),
+                    ],
                 ]
             ),
         )
@@ -394,21 +412,22 @@ def yins_about_callback(update, context):
         first_name = update.effective_user.first_name
         uptime = get_readable_time((time.time() - StartTime))
         query.message.edit_text(
-                PM_START_TEXT.format(
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
+            PM_START_TEXT.format(
+                escape_markdown(first_name),
+                escape_markdown(uptime),
+                sql.num_users(),
+                sql.num_chats(),
+            ),
+            reply_markup=InlineKeyboardMarkup(buttons),
+            parse_mode=ParseMode.MARKDOWN,
+            timeout=60,
+            disable_web_page_preview=False,
         )
 
-    elif query.data == "yins_admin":
+    elif query.data == "Alexy_admin":
         query.message.edit_text(
             text=f"*๏ Let's make your group bit effective now*"
-            "\nCongragulations, YinsRobot now ready to manage your group."
+            "\nCongragulations, cutieRobot now ready to manage your group."
             "\n\n*Admin Tools*"
             "\nBasic Admin tools help you to protect and powerup your group."
             "\nYou can ban members, Kick members, Promote someone as admin through commands of bot."
@@ -422,7 +441,7 @@ def yins_about_callback(update, context):
             ),
         )
 
-    elif query.data == "yins_notes":
+    elif query.data == "Alexy_notes":
         query.message.edit_text(
             text=f"<b>๏ Setting up notes</b>"
             f"\nYou can save message/media/audio or anything as notes"
@@ -433,59 +452,74 @@ def yins_about_callback(update, context):
                 [[InlineKeyboardButton(text="Go Back", callback_data="yins_")]]
             ),
         )
-    elif query.data == "yins_support":
+    elif query.data == "Alexy_support":
         query.message.edit_text(
-            text="*๏ Yins support chats*"
-            "\nJoin My Support Group/Channel for see or report a problem on Yins.",
+            text="*๏ comrade support chats*"
+            "\nJoin My Support Group/Channel for see or report a problem on cutie.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="Support", url="t.me/AyiinXdSupport"),
-                    InlineKeyboardButton(text="Updates", url="https://t.me/AyiinSupport"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Go Back", callback_data="yins_"),
-                 
-                 ]
+                    [
+                        InlineKeyboardButton(
+                            text="【👑sᴜᴘᴘᴏʀᴛ👑】", url="https://t.me/comrade_robotz"
+                        ),
+                        InlineKeyboardButton(
+                            text="【🌍ɴᴇᴛᴡᴏʀᴋ🌏】", url="https://t.me/comrade_network"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(text="【🌟ɢᴏ ʙᴀᴄᴋ🌟】", callback_data="yins_"),
+                    ],
                 ]
             ),
         )
 
-
-    elif query.data == "yins_credit":
+    elif query.data == "Alexy_credit":
         query.message.edit_text(
-            text=f"๏ Credis for Yins\n"
-            "\nHere Developers Making And Give Inspiration For Made The YinsRobot",
+            text=f"๏ Credis for Alexy\n" "\n𝗨𝗡𝗗𝗘𝗥🔻𝗧𝗘𝗔𝗠 𝗖𝗢𝗠𝗥𝗔𝗗𝗘🔺 𝗚𝗥𝗢𝗨𝗣𝗦",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="AyiinXd", url="https://github.com/AyiinXd"),
-                    InlineKeyboardButton(text="Ayiin-Userbot", url="https://github.com/AyiinXd/Ayiin-Userbot"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="AyiinMusic", url="https://github.com/AyiinXd/AyiinMusic"),
-                    InlineKeyboardButton(text="YinsRobot", url="https://github.com/AyiinXd/YinsRobot"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Anime Kaizoku", url="https://github.com/animekaizoku"),
-                    InlineKeyboardButton(text="TheGhost Hunter", url="https://github.com/HuntingBots"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Inuka Asith", url="https://github.com/inukaasith"),
-                    InlineKeyboardButton(text="Noob-Kittu", url="https://github.com/noob-kittu"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Queen Arzoo", url="https://github.com/QueenArzoo"),
-                    InlineKeyboardButton(text="Paul Larsen", url="https://github.com/PaulSonOfLars"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Go Back", callback_data="yins_"),
-                 ]
+                    [
+                        InlineKeyboardButton(
+                            text="༝༚❰ ᴅᴇᴀʀ🔞ᴄᴏᴍʀᴀᴅ𝛆 ❱༟", url="https://t.me/tamil_comrade"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="༝༚❰ ᴋᴀᴅᴀʟᴏʀᴀ🖤ᴋᴀᴅᴀʟᴀɪ❱༟",
+                            url="https://t.me/kadalora_kadalai",
+                        ),
+                        InlineKeyboardButton(
+                            text="༝༚❰ ʀᴏʏᴀʟ 👑ғᴀᴍɪʟʏ❱༟",
+                            url="https://t.me/tamilchatroyalfamily",
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="༝༚❰ 🍁sɪᴠᴀᴍᴀʏᴀᴍ🍁 ❱༟ ", url="https://t.me/SiVaMaYaMm"
+                        ),
+                        InlineKeyboardButton(
+                            text="༝༚❰ 🎶ᴍᴜsɪᴄ sᴛᴀᴛɪᴏɴ🎶 ❱༟",
+                            url="https://t.me/dc_music_station",
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="😉𝐔ɾυƚυ 𝐌αɱα 𝐔ʅʅα 𝐕αɱαα😻",
+                            url="https:t.me/ullavanthu_uruttu",
+                        ),
+                        InlineKeyboardButton(
+                            text="༚❰🔻sǫᴜɪᴅ ɢᴀᴍᴇ🔺❱༟", url="https://t.me/squid_game_x"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(text="【𝗚𝗢 𝗕𝗔𝗖𝗞】", callback_data="yins_"),
+                    ],
                 ]
             ),
         )
+
 
 def Source_about_callback(update, context):
     query = update.callback_query
@@ -505,26 +539,24 @@ def Source_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [
-                 [
-                    InlineKeyboardButton(text="Go Back", callback_data="yins_")
-                 ]
-                ]
+                [[InlineKeyboardButton(text="Go Back", callback_data="yins_")]]
             ),
         )
     elif query.data == "source_back":
         first_name = update.effective_user.first_name
         query.message.edit_text(
-                PM_START_TEXT.format(
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
+            PM_START_TEXT.format(
+                escape_markdown(first_name),
+                escape_markdown(uptime),
+                sql.num_users(),
+                sql.num_chats(),
+            ),
+            reply_markup=InlineKeyboardMarkup(buttons),
+            parse_mode=ParseMode.MARKDOWN,
+            timeout=60,
+            disable_web_page_preview=False,
         )
+
 
 def get_help(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
@@ -749,7 +781,7 @@ def donate(update: Update, context: CallbackContext):
             DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True
         )
 
-        if OWNER_ID != 1606221784:
+        if OWNER_ID != 5448900586:
             update.effective_message.reply_text(
                 "I'm free for everyone ❤️ If you wanna make me smile, just join"
                 "[My Channel]({})".format(DONATION_LINK),
@@ -797,9 +829,9 @@ def main():
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
             dispatcher.bot.sendMessage(
-                f"@{SUPPORT_CHAT}", 
-                "✨ Hai, YinzRobot Berhasil Diaktifkan",
-                parse_mode=ParseMode.MARKDOWN
+                f"@{SUPPORT_CHAT}",
+                "✨ Hi, AlexyRobot Activated Successfully",
+                parse_mode=ParseMode.MARKDOWN,
             )
         except Unauthorized:
             LOGGER.warning(
